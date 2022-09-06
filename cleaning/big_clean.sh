@@ -32,9 +32,9 @@ inputFileNameWithoutExtension=$(basename "$inputFile" .tgz)
 contentPath=$(find "$tempDir" -type d -name "${inputFileNameWithoutExtension}")
 
 # Move the output files from the temporary directory into the directory
-mv -v "$contentPath" "$inputFileNameWithoutExtension"
+mv -f "$contentPath" "$inputFileNameWithoutExtension"
 # Create a new archive file with the remaining files.
 tar -zcf  "cleaned_${inputFile}" "$inputFileNameWithoutExtension"
 
 # Remove the temporary folders
-rm -rv "$inputFileNameWithoutExtension"
+rm -rf "$inputFileNameWithoutExtension"
